@@ -1,13 +1,10 @@
 import express from "express";
+import "reflect-metadata";
+import "./database";
+import { router } from "./routes";
 
 const app = express();
 
-app.get("/test", (request, response) => {
-    return response.send("mensagem simples");
-});
-
-app.post("/test-post", (request, response) => {
-    return response.send("post simples");
-});
-
+app.use(express.json())
+app.use(router);
 app.listen(3000, () => console.log("Server running in: http://localhost:3000"));
